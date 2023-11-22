@@ -1,0 +1,48 @@
+import React from "react";
+
+ const Hello = (props) => {
+   console.log(props)
+   return (
+     <div>
+       <p>Hello {props.name}, you are {props.age} years old</p>
+     </div>
+   )
+ }
+
+ const App = () => {
+   const friends = [
+    { name: "Peter", age: 4 },
+    { name: "Maya", age: 10 },
+  ]
+
+   return (
+     <div>
+       <p>{friends[0].name} {friends[0].age}</p>//each curly braces rendered the item object
+       <p>{friends[1].name} {friends[1].age}</p>
+     </div>
+   )
+ }
+
+
+
+
+export default App //without this , the whole app breaks down
+
+
+/** NOTES...
+ * In React, the individual things rendered in braces must be primitive values, such as numbers or strings
+ * React also allows arrays to be rendered if the array contains values ​​that are eligible for rendering (such as numbers or strings)
+ */
+
+
+ Refactored:
+    <p>
+        {part1} {exercises1}
+      </p>
+      <p>
+        {part2} {exercises2}
+      </p>
+      <p>
+        {part3} {exercises3}
+      </p>
+    </div>

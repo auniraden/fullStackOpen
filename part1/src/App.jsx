@@ -1,28 +1,54 @@
-import React from "react";
+import React from 'react';
 
- const Hello = (props) => {
-   console.log(props)
-   return (
-     <div>
-       <p>Hello {props.name}, you are {props.age} years old</p>
-     </div>
-   )
- }
+const Header = ({ course }) => {
+  return (
+    <h1>{course}</h1>
+  );
+};
 
- const App = () => {
-   const name = "Peter";
-  const age = 10;
-   return (
-     <div>
-       <h1>Greetings</h1>
+const Part = ({partName, exercises }) => {
+  return(
+    <p>
+      {partName} {exercises}
+    </p>
+  );
+};
 
-       <Hello name = "Maya" age = {26 + 10} />
-       <Hello name = {name} age = {age}/>
-     </div>
-   )
- }
+const Content = ({ parts }) => {
+  return (
+    <div>
+      {parts.map((part, index) => (
+        <Part key={index} partName={part.name} exercises={part.exercises} />
+      ))}
+    </div>
+  );
+};
+
+const Total = ({ parts }) => {
+  const totalExercises = parts.reduce((total, part) => total + part.exercises, 0);
+  return (
+    <p>Total number of exercises: {totalExercises}</p>
+  );
+};
 
 
+const App = () => {
+  const course = "Half Stack application development";
+  const parts = [
+    {name: "Fundamentals of React", exercises: 10},
+    {name: "Using props to pass data", exercises: 7},
+    {name: "State of a component", exercises: 14},
+  ];
+
+  return (
+    <div>
+      <Header course={course}/>
+      <Content parts={parts}/>
+      <Total parts={parts}/>
+    </div>
+  );
+
+};
 
 
-export default App //without this , the whole app breaks down
+export default App;
